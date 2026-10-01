@@ -1,0 +1,28 @@
+/* Shared interaction safeguards. Brand and motion remain in wh.css. */
+.drawer[aria-hidden="true"]{visibility:hidden}
+.drawer[aria-hidden="false"]{visibility:visible}
+.spear:focus-within .spear-back{transform:translateY(0);opacity:1;pointer-events:auto}
+.spear:focus-within .spear-face{transform:translateY(-26%);opacity:0}
+.spear:focus-within .spear-back li{opacity:1;transform:none}
+
+/* Content remains readable when scripting is unavailable. */
+.no-js .overture,.no-js .burger,.no-js .scrim,.no-js .drawer{display:none!important}
+.no-js body{overflow:auto!important}
+.no-js .rv,.no-js .rv *,.no-js .seq,.no-js .h-line span,
+.no-js .wipe > *,.no-js .kin-line,.no-js .kin-line span{
+  opacity:1!important;transform:none!important;clip-path:none!important;
+  animation:none!important;transition:none!important;
+}
+.no-js .acc-a{max-height:none!important;overflow:visible}
+.no-js .mast{position:static}
+.no-js .mast-in{height:auto;min-height:82px;flex-wrap:wrap;padding-block:18px}
+.no-js .nav{display:flex;flex-wrap:wrap;margin-left:0;gap:12px 24px}
+.no-js .mast .btn{display:inline-flex}
+.no-js .spear-face,.no-js .spear-back{
+  position:static;transform:none!important;opacity:1!important;pointer-events:auto;
+}
+.no-js .spear-back li{opacity:1!important;transform:none!important}
+.no-js .spear-more{display:none}
+@media(max-width:820px){
+  .no-js .nav{width:100%;order:3}
+}

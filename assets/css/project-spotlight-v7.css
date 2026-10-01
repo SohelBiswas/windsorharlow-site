@@ -1,0 +1,40 @@
+/* Two compact engineering features, revealed by flat centre-split panels. */
+.project-spotlight{position:relative;isolation:isolate;overflow:hidden;background:#fff;color:#071d2b;padding:62px 0 58px;scroll-margin-top:88px;--theatre-progress:1;--spotlight-pointer:auto}
+.project-spotlight .spotlight-heading{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:32px}
+.project-spotlight .spotlight-heading h2{font:500 clamp(35px,3.25vw,48px)/1.1 var(--display,"Archivo",Arial,sans-serif);letter-spacing:-.045em;margin:0;color:#071d2b}
+.project-spotlight .spotlight-heading>p{font-size:17px;line-height:1.45;color:#536572;margin:0 0 3px;max-width:335px}
+.project-spotlight .spotlight-features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.project-spotlight .spotlight-feature{min-width:0;display:flex;flex-direction:column}
+.project-spotlight .spotlight-visual{background:#f0f6f8;height:180px;display:flex;align-items:center;justify-content:center;margin-bottom:23px;overflow:hidden}
+.project-spotlight .spotlight-diagram{display:block;width:100%;height:100%;max-width:660px}
+.project-spotlight .spotlight-node{fill:#f8fcfe;stroke:#367f9f;stroke-width:1.3}
+.project-spotlight .spotlight-route{fill:none;stroke:#61b3a5;stroke-width:1.4;stroke-linejoin:round;stroke-linecap:round}
+.project-spotlight .spotlight-label{fill:#102e41;font:500 16px var(--display,"Archivo",Arial,sans-serif)}
+.project-spotlight .spotlight-symbol{fill:none;stroke:#397d9c;stroke-width:1.6}
+.project-spotlight .spotlight-cloud{fill:none;stroke:#61aaa6;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.project-spotlight .spotlight-cloud-link{fill:none;stroke:#367f9f;stroke-width:1.4;stroke-dasharray:3 4}
+.project-spotlight .spotlight-bars{fill:#79cab0}
+.project-spotlight .spotlight-feature h3{font-size:27px;line-height:1.17;font-weight:600;letter-spacing:-.035em;margin:0 0 11px;color:#071d2b}
+.project-spotlight .spotlight-feature>p{font-size:17px;line-height:1.5;color:#536572;margin:0 0 21px;max-width:600px}
+.project-spotlight .spotlight-link{display:inline-flex;align-items:center;align-self:flex-start;gap:15px;font-size:16px;line-height:1.4;color:#087fc3;margin-top:auto;pointer-events:var(--spotlight-pointer);text-decoration:none}
+.project-spotlight .spotlight-link svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.project-spotlight .spotlight-link:hover{text-decoration:underline;text-underline-offset:5px}
+.project-spotlight .spotlight-link:focus-visible{outline:2px solid #087fc3;outline-offset:6px;pointer-events:auto}
+.project-spotlight .spotlight-curtains{position:absolute;inset:0;z-index:3;pointer-events:none;display:flex}
+.project-spotlight .spotlight-curtains[hidden]{display:none}
+.project-spotlight .spotlight-curtains>span{position:absolute;top:0;bottom:0;width:calc(50% + 1px);background:#071d2b;will-change:transform;transition:none!important}
+.project-spotlight .spotlight-curtain-left{left:0;transform:translateX(calc(-100% * var(--theatre-progress)))}
+.project-spotlight .spotlight-curtain-right{right:0;transform:translateX(calc(100% * var(--theatre-progress)))}
+.project-spotlight:focus-within .spotlight-curtain-left{transform:translateX(-100%)}
+.project-spotlight:focus-within .spotlight-curtain-right{transform:translateX(100%)}
+.project-spotlight:focus-within .spotlight-link{pointer-events:auto}
+@media(max-width:1100px){.project-spotlight .spotlight-heading{display:block}.project-spotlight .spotlight-heading>p{max-width:none;margin-top:17px}.project-spotlight .spotlight-features{gap:28px}.project-spotlight .spotlight-feature h3{font-size:24px}.project-spotlight .spotlight-feature>p{font-size:16px}.project-spotlight .spotlight-label{font-size:18px}}
+@media(max-width:900px){.project-spotlight .spotlight-features{grid-template-columns:1fr;gap:35px}}
+@media(max-width:680px){.project-spotlight{padding:49px 0}.project-spotlight .spotlight-heading{margin-bottom:27px}.project-spotlight .spotlight-heading h2{font-size:34px;max-width:380px}.project-spotlight .spotlight-heading>p{font-size:16px;margin-top:16px}.project-spotlight .spotlight-visual{display:flex;height:auto;aspect-ratio:10/3;overflow:hidden;margin-bottom:20px}.project-spotlight .spotlight-feature h3{font-size:24px}.project-spotlight .spotlight-feature>p{font-size:16px;margin-bottom:17px}.project-spotlight .spotlight-link{font-size:15px}.project-spotlight .spotlight-diagram{width:100%;min-width:0;max-width:none;height:auto}.project-spotlight .spotlight-label{font-size:24px}}
+.project-spotlight .spotlight-visual:focus-visible{outline:2px solid #087fc3;outline-offset:4px}
+.motion-paused .project-spotlight .spotlight-curtains{display:none!important}
+.motion-paused .project-spotlight .spotlight-link{pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.project-spotlight .spotlight-curtains{display:none!important}.project-spotlight .spotlight-link{pointer-events:auto}}
+@media print{.project-spotlight .spotlight-curtains{display:none!important}.project-spotlight .spotlight-link{pointer-events:auto}.project-spotlight{break-inside:avoid}}
+
+@media(max-width:360px){.project-spotlight .spotlight-label{font-size:26px}}

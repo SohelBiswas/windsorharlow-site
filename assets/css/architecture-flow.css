@@ -1,0 +1,43 @@
+/* The same editable architecture becomes a narrated, controllable signal flow. */
+.architecture-flow{margin:0;min-width:0;border:1px solid #dce5e8;background:#fff;color:#071d2b;overflow:hidden}
+.architecture-canvas{width:100%;overflow:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#89a9b7 transparent}
+.architecture-canvas:focus-visible{outline:3px solid #087fc3;outline-offset:-3px}
+.architecture-svg{display:block;width:100%;height:auto;max-width:none!important;aspect-ratio:auto!important;object-fit:initial!important;animation:none!important;clip-path:none!important;transform:none!important}
+.architecture-caption{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:20px;padding:23px 26px;background:#fff;color:#071d2b;text-align:left}
+.architecture-step{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:0 0 9px;font-size:13px;font-weight:600;line-height:1.35}
+.architecture-count{font-variant-numeric:tabular-nums;white-space:nowrap;color:#557180;font-weight:400}
+.architecture-explanation{font-size:15px!important;line-height:1.55!important;margin:0!important;color:#334e5d!important;min-height:3.1em}
+.architecture-note{display:block;margin-top:12px;font-size:10px!important;letter-spacing:.03em;color:#6a7e89!important;line-height:1.5!important}
+.architecture-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;max-width:280px}
+.architecture-controls[hidden]{display:none}
+.architecture-controls button{appearance:none;font:inherit;font-size:11px;line-height:1.25;border:1px solid #c7d7df;border-radius:2px;padding:10px 11px;background:transparent;color:#173849;cursor:pointer;white-space:nowrap;transition:background .2s,border-color .2s,color .2s}
+.architecture-controls button:first-child{background:#071d2b;color:#fff;border-color:#071d2b;min-width:86px}
+.architecture-controls button:hover{border-color:#087fc3;background:#edf6f9;color:#071d2b}
+.architecture-controls button:focus-visible{outline:3px solid #087fc3;outline-offset:3px}
+.architecture-controls button:disabled{opacity:.36;cursor:default}
+.architecture-signal{fill:none;stroke:#a2efcf;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;opacity:0}
+.architecture-packet{fill:#ddfff0;stroke:#48ae8f;stroke-width:1.2;opacity:0;pointer-events:none}
+.architecture-node-halo{fill:#83dcb5;fill-opacity:0;stroke:#83dcb5;stroke-width:2.4;stroke-opacity:0;pointer-events:none;transition:fill-opacity .35s,stroke-opacity .35s}
+.architecture-node.is-flow-visited .architecture-node-halo{stroke-opacity:.22}
+.architecture-node.is-flow-active .architecture-node-halo{fill-opacity:0;stroke-opacity:1}
+.architecture-flow--detail .architecture-node>rect:not(.architecture-node-halo){transition:stroke .35s,fill .35s,stroke-width .35s}
+.architecture-flow--detail .architecture-node.is-flow-visited>rect:not(.architecture-node-halo){stroke:#75afa5}
+.architecture-flow--detail .architecture-node.is-flow-active>rect:not(.architecture-node-halo){stroke:#087e78;stroke-width:2.6;fill:#cdf0e5}
+.architecture-flow--detail .architecture-node-halo{stroke:#087e78}
+.architecture-flow--detail .architecture-signal{stroke:#047b75}
+.architecture-flow--detail .architecture-packet{fill:#087f77;stroke:#fff;stroke-width:2}
+.architecture-flow--compact{border:0;background:#071d2b}
+.architecture-flow--compact .architecture-caption{border:1px solid #dce5e8;border-top:0;grid-template-columns:1fr;gap:16px;padding:22px 25px}
+.architecture-flow--compact .architecture-explanation{min-height:3.1em}
+.architecture-flow--compact .architecture-controls{max-width:none}
+.architecture-flow--compact .architecture-note{font-size:10px!important}
+.architecture-flow--compact .architecture-svg{background:#071d2b}
+.project-flow-section .architecture-flow{margin-top:24px}
+.project-static-architecture{margin-top:22px}
+.project-static-architecture .project-diagram-scroll{margin-top:22px}
+.project-static-architecture .project-diagram-scroll img{display:block;width:100%;height:auto}
+.project-hero-art .architecture-flow{width:100%}
+@media(min-width:1000px){.architecture-flow--detail .architecture-controls{max-width:300px}.architecture-flow--detail .architecture-story{max-width:770px}.architecture-flow--detail .architecture-caption{min-height:152px}}
+@media(max-width:700px){.architecture-caption{display:block;padding:19px 18px}.architecture-controls{margin-top:17px;max-width:none}.architecture-flow--compact .architecture-caption{padding:18px}.architecture-flow--compact .architecture-canvas .architecture-svg{min-width:620px}.architecture-flow--detail .architecture-canvas .architecture-svg{min-width:900px}.architecture-explanation{min-height:4.65em;font-size:14px!important}.architecture-step{font-size:12px}.architecture-flow--compact .architecture-controls{margin-top:0}.architecture-note{margin-top:10px}.architecture-controls button{font-size:11px;padding:10px}.architecture-flow--compact .architecture-explanation{min-height:4.65em}}
+@media(prefers-reduced-motion:reduce){.architecture-node-halo,.architecture-node>rect,.architecture-controls button{transition:none!important}}
+html.motion-paused .architecture-node-halo,html.motion-paused .architecture-node>rect,html.motion-paused .architecture-controls button{transition:none!important}

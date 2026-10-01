@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Internal console — not for indexing.
+Disallow: /admin.html
+
+Sitemap: https://www.windsorharlow.com/sitemap.xml
