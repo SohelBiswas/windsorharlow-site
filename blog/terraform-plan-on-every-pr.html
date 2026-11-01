@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan on every pull request: safer Terraform on AWS with GitHub Actions and OIDC — Windsor Harlow</title>
+<meta name="description" content="Stop applying infrastructure from laptops. A practical setup for reviewed Terraform changes, shared state and AWS access with no stored keys.">
+<link rel="canonical" href="https://windsorharlow.com/blog/terraform-plan-on-every-pr.html">
+<meta name="theme-color" content="#2463E8">
+<meta property="og:site_name" content="Windsor Harlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Plan on every pull request: safer Terraform on AWS with GitHub Actions and OIDC — Windsor Harlow">
+<meta property="og:description" content="Stop applying infrastructure from laptops. A practical setup for reviewed Terraform changes, shared state and AWS access with no stored keys.">
+<meta property="og:url" content="https://windsorharlow.com/blog/terraform-plan-on-every-pr.html">
+<meta property="og:image" content="https://windsorharlow.com/assets/og/blog-terraform-plan-on-every-pr.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plan on every pull request: safer Terraform on AWS with GitHub Actions and OIDC — Windsor Harlow">
+<meta name="twitter:description" content="Stop applying infrastructure from laptops. A practical setup for reviewed Terraform changes, shared state and AWS access with no stored keys.">
+<meta name="twitter:image" content="https://windsorharlow.com/assets/og/blog-terraform-plan-on-every-pr.jpg">
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","js");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Plan on every pull request: safer Terraform on AWS with GitHub Actions and OIDC","description":"Stop applying infrastructure from laptops. A practical setup for reviewed Terraform changes, shared state and AWS access with no stored keys.","datePublished":"2026-11-01","author":{"@type":"Organization","name":"Windsor Harlow"},"publisher":{"@type":"Organization","name":"Windsor Harlow"},"mainEntityOfPage":"https://windsorharlow.com/blog/terraform-plan-on-every-pr.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="floatnav" id="floatnav">
+  <a class="brand" href="../index.html" aria-label="Windsor Harlow home"><img src="../assets/brand/logo-primary.svg" alt="Windsor Harlow" width="100" height="26"></a>
+  <nav class="links" aria-label="Quick"><a href="../services.html">Services</a><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../blog.html" aria-current="page">Blog</a><a href="../contact.html">Contact</a></nav>
+  <a class="btn btn-dark sm" href="../contact.html">Let’s talk <span class="arr" aria-hidden="true">↗</span></a>
+  <button class="menu-btn" type="button" data-menu aria-controls="drawer" aria-expanded="false" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+</div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+  <div class="drawer-top">
+    <a class="brand" href="../index.html"><img src="../assets/brand/logo-primary.svg" alt="Windsor Harlow" width="110" height="28"></a>
+    <button class="close" type="button" data-close aria-label="Close menu">×</button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="../index.html">Home</a>
+    <a href="../services.html">Services</a><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a>
+  </nav>
+  <div class="drawer-foot">
+    <a class="btn btn-dark" href="../contact.html">Start a project <span class="arr" aria-hidden="true">↗</span></a>
+    <a href="mailto:business@windsorharlow.com" style="color:var(--body)">business@windsorharlow.com</a>
+  </div>
+</div>
+<div class="page"><div class="read-progress" aria-hidden="true"><i></i></div><main id="main" tabindex="-1"><section class="sky page-hero left post-hero" aria-label="Page introduction">
+  <svg class="sky-art" aria-hidden="true" viewBox="0 0 1412 640" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ppbg" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#2F62B8"/><stop offset=".45" stop-color="#5E93DC"/><stop offset=".78" stop-color="#B9D3F0"/><stop offset="1" stop-color="#F1E6C4"/></linearGradient><linearGradient id="ppa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#DCEBFF"/><stop offset=".35" stop-color="#7FB2F4"/><stop offset=".7" stop-color="#2A64DA"/><stop offset="1" stop-color="#1239A6"/></linearGradient><linearGradient id="ppb" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E2F9A"/><stop offset=".5" stop-color="#2463E8"/><stop offset="1" stop-color="#8CC0FA"/></linearGradient><linearGradient id="ppe" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><linearGradient id="pps" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16367A" stop-opacity=".34"/><stop offset=".55" stop-color="#16367A" stop-opacity=".18"/><stop offset="1" stop-color="#16367A" stop-opacity="0"/></linearGradient><filter id="ppf" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="22"/></filter><filter id="ppg" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs><rect width="1412" height="640" fill="url(#ppbg)"/><ellipse cx="260" cy="580" rx="520" ry="220" fill="#F7EBC6" opacity=".75" filter="url(#ppf)"/><g class="sky-drift"><path d="M 1500 -40 C 1240 120, 1120 300, 980 470 C 840 640, 640 820, 300 1040 L 1500 1040 Z" fill="url(#ppb)" opacity=".92"/><path d="M 1500 120 C 1300 260, 1180 420, 1060 560 C 940 700, 780 860, 560 1040 L 1500 1040 Z" fill="url(#ppa)" opacity=".75" filter="url(#ppg)"/></g><g class="sky-drift2"><path class="sky-shine" d="M 1500 -60 C 1230 110, 1110 290, 970 460 C 830 630, 630 810, 290 1030" fill="none" stroke="url(#ppe)" stroke-width="3"/><path d="M 1500 -60 C 1230 110, 1110 290, 970 460 C 830 630, 630 810, 290 1030" fill="none" stroke="#fff" stroke-width="26" opacity=".25" filter="url(#ppf)"/><path d="M 1500 260 C 1330 380, 1220 520, 1120 640 C 1020 760, 900 880, 760 1040" fill="none" stroke="#E6F1FF" stroke-width="1.5" opacity=".7"/></g><rect width="1412" height="640" fill="url(#pps)"/></svg>
+  <header>
+  <nav class="topnav" aria-label="Main">
+    <a class="brand white" href="../index.html" aria-label="Windsor Harlow home"><img src="../assets/brand/logo-reverse.svg" alt="Windsor Harlow" width="120" height="32"></a>
+    <div class="navlinks"><a href="../services.html">Services</a><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../blog.html" aria-current="page">Blog</a><a href="../contact.html">Contact</a></div>
+    <a class="btn btn-dark sm" href="../contact.html">Let’s talk <span class="arr" aria-hidden="true">↗</span></a>
+    <button class="menu-btn" type="button" data-menu aria-controls="drawer" aria-expanded="false" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+  </nav>
+</header>
+  <div class="hero-copy">
+    <nav class="crumbs blur-in" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../blog.html">Blog</a><span aria-hidden="true">/</span><span>Cloud & DevOps</span></nav>
+    <h1 class="h-page blur-in d1">Plan on every pull request: safer Terraform on AWS with GitHub Actions and OIDC</h1>
+    <p class="lede blur-in d2">Stop applying infrastructure from laptops. A practical setup for reviewed Terraform changes, shared state and AWS access with no stored keys.</p>
+    <div class="post-meta blur-in d3"><span class="tag product">Cloud &amp; DevOps</span><span>1 Nov 2026</span><span aria-hidden="true">·</span><span>3 min read</span><span aria-hidden="true">·</span><span>Windsor Harlow</span></div>
+  </div>
+</section>
+<section class="wrap section">
+  <div class="post-grid">
+    <aside class="post-toc" aria-label="On this page"><span class="mono">On this page</span><nav><a href="#the-goal">The goal</a><a href="#step-1-put-state-somewhere-shared-and-locked">Step 1: put state somewhere shared and locked</a><a href="#step-2-let-github-prove-who-it-is-instead-of-storing-keys">Step 2: let GitHub prove who it is, instead of storing keys</a><a href="#step-3-plan-on-pull-requests-apply-on-merge">Step 3: plan on pull requests, apply on merge</a><a href="#step-4-compose-environments-from-modules">Step 4: compose environments from modules</a><a href="#step-5-prove-you-can-tear-it-down">Step 5: prove you can tear it down</a><a href="#a-checklist-to-take-away">A checklist to take away</a></nav></aside>
+    <article class="post-body" id="post"><p>Most infrastructure incidents don't start with a bad design. They start with a good change applied the wrong way: from someone's laptop, with a long-lived access key, against state that someone else changed an hour earlier.</p>
+<p>The fix is a workflow where every change is written as code, reviewed as a plan, and applied by a pipeline that has no stored credentials. This post walks through the setup we use, based on our <a href="../work/terraform-aws.html">AWS infrastructure-as-code lab build</a>.</p>
+<h2 id="the-goal">The goal</h2>
+<p>By the end, your team works like this:</p>
+<ol><li>Someone opens a pull request that changes Terraform code.</li><li>The pipeline runs <code>terraform plan</code> and the reviewer sees exactly what will be created, changed or destroyed.</li><li>When the pull request is merged, the pipeline applies the change, after an approval for production.</li><li>Nobody needs AWS keys on their laptop, and the pipeline has none stored either.</li></ol>
+<h2 id="step-1-put-state-somewhere-shared-and-locked">Step 1: put state somewhere shared and locked</h2>
+<p>Terraform's state file is its memory of what exists. If it lives on a laptop, nobody else can safely change anything. Store it in S3 with versioning and encryption turned on, and use locking so two runs can't write at the same time.</p>
+<div class="code"><span class="code-lang">hcl</span><pre><code>terraform {
+  backend &quot;s3&quot; {
+    bucket         = &quot;acme-terraform-state&quot;
+    key            = &quot;network/prod.tfstate&quot;
+    region         = &quot;ap-south-1&quot;
+    encrypt        = true
+    dynamodb_table = &quot;terraform-locks&quot;
+  }
+}</code></pre></div>
+<p>A DynamoDB table has been the standard lock for years. On Terraform 1.10 and later you can use S3's own locking instead by setting <code>use_lockfile = true</code> and dropping the table. Either way, turn on bucket versioning so a bad state write can be rolled back.</p>
+<h2 id="step-2-let-github-prove-who-it-is-instead-of-storing-keys">Step 2: let GitHub prove who it is, instead of storing keys</h2>
+<p>GitHub Actions can issue a short-lived OpenID Connect (OIDC) token for each workflow run. AWS can trust that token and hand back temporary credentials that expire within the hour. No access key is ever created, so there is nothing to leak or rotate.</p>
+<p>Create an IAM OIDC identity provider for <code>token.actions.githubusercontent.com</code>, then two roles:</p>
+<ul><li><strong>terraform-plan</strong>: read-only access plus access to the state bucket and lock. Pull requests use this.</li><li><strong>terraform-apply</strong>: the permissions needed to make changes. Only the <code>main</code> branch can use it.</li></ul>
+<p>The trust policy is what enforces that. This one lets only workflows running on <code>main</code> in one repository assume the apply role:</p>
+<div class="code"><span class="code-lang">json</span><pre><code>{
+  &quot;Effect&quot;: &quot;Allow&quot;,
+  &quot;Principal&quot;: {
+    &quot;Federated&quot;: &quot;arn:aws:iam::123456789012:oidc-provider/token.actions.githubusercontent.com&quot;
+  },
+  &quot;Action&quot;: &quot;sts:AssumeRoleWithWebIdentity&quot;,
+  &quot;Condition&quot;: {
+    &quot;StringEquals&quot;: {
+      &quot;token.actions.githubusercontent.com:aud&quot;: &quot;sts.amazonaws.com&quot;,
+      &quot;token.actions.githubusercontent.com:sub&quot;: &quot;repo:acme/infrastructure:ref:refs/heads/main&quot;
+    }
+  }
+}</code></pre></div>
+<p>For the plan role, the subject for pull request runs is <code>repo:acme/infrastructure:pull_request</code>.</p>
+<aside class="callout"><p>Be strict with the <code>sub</code> condition. A trust policy that matches any repository, or any branch, turns a short-lived credential into a door anyone with a fork can knock on.</p></aside>
+<h2 id="step-3-plan-on-pull-requests-apply-on-merge">Step 3: plan on pull requests, apply on merge</h2>
+<p>One workflow handles both. The <code>id-token: write</code> permission is what lets the job request the OIDC token.</p>
+<div class="code"><span class="code-lang">yaml</span><pre><code>name: terraform
+on:
+  pull_request:
+    paths: [&quot;infra/**&quot;]
+  push:
+    branches: [main]
+    paths: [&quot;infra/**&quot;]
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  plan:
+    if: github.event_name == &#x27;pull_request&#x27;
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra/envs/prod
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::123456789012:role/terraform-plan
+          aws-region: ap-south-1
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform fmt -check -recursive
+      - run: terraform init -input=false
+      - run: terraform validate
+      - run: terraform plan -input=false -no-color
+
+  apply:
+    if: github.event_name == &#x27;push&#x27;
+    runs-on: ubuntu-latest
+    environment: production
+    defaults:
+      run:
+        working-directory: infra/envs/prod
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::123456789012:role/terraform-apply
+          aws-region: ap-south-1
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform init -input=false
+      - run: terraform apply -input=false -auto-approve</code></pre></div>
+<p>Two details make this safe in practice:</p>
+<ul><li><strong>The <code>production</code> environment</strong> has required reviewers in GitHub's settings. The apply job waits until someone approves it, even after the merge.</li><li><strong>The plan is visible in the pull request.</strong> The plan output appears in the job log; most teams also post it as a pull request comment so reviewers don't have to open the logs. Read the summary line, <em>Plan: 2 to add, 1 to change, 0 to destroy</em>, before anything else. A surprise in the destroy count is the most common thing review catches.</li></ul>
+<h2 id="step-4-compose-environments-from-modules">Step 4: compose environments from modules</h2>
+<p>Keep reusable pieces in modules, such as network, compute, storage and identity, and assemble them per environment:</p>
+<div class="code"><span class="code-lang">text</span><pre><code>infra/
+  modules/
+    network/
+    compute/
+    storage/
+    iam/
+  envs/
+    dev/
+    prod/</code></pre></div>
+<p>Each environment folder has its own state key and its own small set of inputs. Dev and production are built from the same code, so what you test is what you ship.</p>
+<h2 id="step-5-prove-you-can-tear-it-down">Step 5: prove you can tear it down</h2>
+<p>Run <code>terraform destroy</code> on a non-production environment and build it again. If that works cleanly, you know your code describes everything that exists, and that nothing important was created by hand. It's also the cheapest way to keep dev environments from running all weekend.</p>
+<h2 id="a-checklist-to-take-away">A checklist to take away</h2>
+<ul><li>State in S3 with versioning, encryption and locking.</li><li>No AWS access keys in GitHub. OIDC roles only, with strict <code>sub</code> conditions.</li><li>Separate plan and apply roles; plan is read-only.</li><li><code>fmt</code>, <code>validate</code> and <code>plan</code> on every pull request.</li><li>Apply only from <code>main</code>, behind an environment approval for production.</li><li>Modules composed per environment, and a teardown you have actually tested.</li></ul>
+<p>None of this needs a platform team. It's an afternoon of setup that pays for itself the first time a plan shows a deletion nobody intended. If you'd like us to set it up for your team, or review what you have, <a href="../contact.html">get in touch</a>.</p>
+      <aside class="post-cta"><div class="svc-name"><span class="orb" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6 9.5 4.25 4.25 0 0 0 7 18z"/></svg></span><span class="t">Cloud &amp; DevOps</span></div><p>Cloud platforms defined in code, automated releases, monitoring — and costs you can actually read.</p><div class="hero-actions" style="justify-content:flex-start"><a class="btn btn-dark sm" href="../contact.html">Talk to us <span class="arr" aria-hidden="true">↗</span></a><a class="link-arrow" href="../services/cloud.html">About this service <span aria-hidden="true">→</span></a></div></aside>
+    </article>
+  </div>
+</section>
+<section class="wrap" style="padding-bottom:20px">
+  <div class="section-head split rv"><h2 class="h-card">More from the blog</h2><a class="link-arrow" href="../blog.html">All posts <span aria-hidden="true">→</span></a></div>
+  <div class="blog-grid two"><a class="bcard rv d0 " href="../blog/rune-is-open-source.html"><span class="bc-cover" aria-hidden="true"><div class="cv cv-rune shot"><div class="ring r1"></div><div class="mini-b"><div class="bar"><i></i><i></i><i></i></div><img src="../assets/shots/rune-dashboard.jpg" alt="" loading="lazy"></div><div class="term"><span><b>$</b> rune unseal</span><span class="dim">✓ vault unsealed</span></div></div></span><span class="bc-body"><span class="bc-meta"><span class="tag product">Security</span><span>4 min read</span></span><span class="bc-title">Rune is now open source</span><span class="bc-sum">Our secrets manager is public under Apache 2.0. Why we built it, how it keeps secrets safe, and how to try it in five minutes.</span><span class="link-arrow">Read the post <span aria-hidden="true">→</span></span></span></a><a class="bcard rv d1 " href="../blog/your-first-ai-feature.html"><span class="bc-cover" aria-hidden="true"><div class="cv cv-rag"><div class="qq">How long do refunds take?</div><div class="psgs"><span class="psg"><em>returns-policy.pdf</em><i style="--s:92%"></i></span><span class="psg"><em>claims-guide.pdf</em><i style="--s:64%"></i></span><span class="psg"><em>support-hours.md</em><i style="--s:18%"></i></span></div><div class="ans"><span>Within 5 working days of the item reaching the warehouse.</span><b>[1]</b></div></div></span><span class="bc-body"><span class="bc-meta"><span class="tag product">AI &amp; ML</span><span>4 min read</span></span><span class="bc-title">Your first AI feature: pick one task, ground it in your data, measure it</span><span class="bc-sum">A practical way to get from &quot;we should use AI&quot; to a feature people trust, in about four weeks, without betting the quarter on it.</span><span class="link-arrow">Read the post <span aria-hidden="true">→</span></span></span></a></div>
+</section>
+</main></div>
+<footer class="foot" id="contact-panel">
+  <svg class="sky-art" aria-hidden="true" viewBox="0 0 1412 760" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ftb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0E2F9A"/><stop offset=".6" stop-color="#2463E8"/><stop offset="1" stop-color="#9CC4F5"/></linearGradient><linearGradient id="ftw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#CFE3FB"/><stop offset="1" stop-color="#5E93DC"/></linearGradient></defs><rect width="1412" height="760" fill="url(#ftb)"/><g class="sky-drift"><path d="M 1500 0 C 1260 140, 1120 320, 980 520 C 900 640, 820 720, 760 800 L 1500 800 Z" fill="url(#ftw)" opacity=".55"/></g><path class="sky-shine" d="M 1500 -20 C 1250 130, 1110 310, 970 510 C 890 630, 810 710, 750 800" fill="none" stroke="#fff" stroke-width="2.5" opacity=".8"/></svg>
+  <div class="foot-in">
+    <div class="foot-cta rv">
+      <h2>Have something to build? Tell us where you are — a senior engineer will reply.</h2>
+      <a class="btn btn-dark" href="../contact.html">Contact us <span class="arr" aria-hidden="true">↗</span></a>
+    </div>
+    <div class="foot-links">
+      <div><h3>Contact</h3><a href="mailto:business@windsorharlow.com">business@windsorharlow.com</a><p style="margin-top:8px">Built in India. Working globally.</p></div>
+      <div><h3>Services</h3><a href="../services/ai.html">AI &amp; ML</a><a href="../services/cloud.html">Cloud &amp; DevOps</a><a href="../services/mobile.html">Mobile apps</a><a href="../services/backend.html">Backend systems</a><a href="../services/web.html">Web products</a><a href="../services/commerce.html">Commerce</a><a href="../services/salesforce.html">Salesforce</a></div>
+      <div><h3>Studio</h3><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../work/rune.html">Rune</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
+      <div><h3>Legal</h3><a href="../privacy.html">Privacy</a></div>
+    </div>
+    <div class="foot-mark" aria-hidden="true"><img class="fm-badge" src="../assets/brand/badge-vector-white.svg" alt=""><img class="fm-word" src="../assets/brand/wordmark-vector-white.svg" alt=""></div>
+    <div class="foot-base"><span>© <span data-year>2026</span> Windsor Harlow. All rights reserved.</span><span>Independent engineering studio</span></div>
+  </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

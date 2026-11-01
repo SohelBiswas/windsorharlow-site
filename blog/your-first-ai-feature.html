@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your first AI feature: pick one task, ground it in your data, measure it — Windsor Harlow</title>
+<meta name="description" content="A practical way to get from &quot;we should use AI&quot; to a feature people trust, in about four weeks, without betting the quarter on it.">
+<link rel="canonical" href="https://windsorharlow.com/blog/your-first-ai-feature.html">
+<meta name="theme-color" content="#2463E8">
+<meta property="og:site_name" content="Windsor Harlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your first AI feature: pick one task, ground it in your data, measure it — Windsor Harlow">
+<meta property="og:description" content="A practical way to get from &quot;we should use AI&quot; to a feature people trust, in about four weeks, without betting the quarter on it.">
+<meta property="og:url" content="https://windsorharlow.com/blog/your-first-ai-feature.html">
+<meta property="og:image" content="https://windsorharlow.com/assets/og/blog-your-first-ai-feature.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your first AI feature: pick one task, ground it in your data, measure it — Windsor Harlow">
+<meta name="twitter:description" content="A practical way to get from &quot;we should use AI&quot; to a feature people trust, in about four weeks, without betting the quarter on it.">
+<meta name="twitter:image" content="https://windsorharlow.com/assets/og/blog-your-first-ai-feature.jpg">
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","js");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Your first AI feature: pick one task, ground it in your data, measure it","description":"A practical way to get from \"we should use AI\" to a feature people trust, in about four weeks, without betting the quarter on it.","datePublished":"2026-11-01","author":{"@type":"Organization","name":"Windsor Harlow"},"publisher":{"@type":"Organization","name":"Windsor Harlow"},"mainEntityOfPage":"https://windsorharlow.com/blog/your-first-ai-feature.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="floatnav" id="floatnav">
+  <a class="brand" href="../index.html" aria-label="Windsor Harlow home"><img src="../assets/brand/logo-primary.svg" alt="Windsor Harlow" width="100" height="26"></a>
+  <nav class="links" aria-label="Quick"><a href="../services.html">Services</a><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../blog.html" aria-current="page">Blog</a><a href="../contact.html">Contact</a></nav>
+  <a class="btn btn-dark sm" href="../contact.html">Let’s talk <span class="arr" aria-hidden="true">↗</span></a>
+  <button class="menu-btn" type="button" data-menu aria-controls="drawer" aria-expanded="false" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+</div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+  <div class="drawer-top">
+    <a class="brand" href="../index.html"><img src="../assets/brand/logo-primary.svg" alt="Windsor Harlow" width="110" height="28"></a>
+    <button class="close" type="button" data-close aria-label="Close menu">×</button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="../index.html">Home</a>
+    <a href="../services.html">Services</a><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a>
+  </nav>
+  <div class="drawer-foot">
+    <a class="btn btn-dark" href="../contact.html">Start a project <span class="arr" aria-hidden="true">↗</span></a>
+    <a href="mailto:business@windsorharlow.com" style="color:var(--body)">business@windsorharlow.com</a>
+  </div>
+</div>
+<div class="page"><div class="read-progress" aria-hidden="true"><i></i></div><main id="main" tabindex="-1"><section class="sky page-hero left post-hero" aria-label="Page introduction">
+  <svg class="sky-art" aria-hidden="true" viewBox="0 0 1412 640" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ppbg" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#2F62B8"/><stop offset=".45" stop-color="#5E93DC"/><stop offset=".78" stop-color="#B9D3F0"/><stop offset="1" stop-color="#F1E6C4"/></linearGradient><linearGradient id="ppa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#DCEBFF"/><stop offset=".35" stop-color="#7FB2F4"/><stop offset=".7" stop-color="#2A64DA"/><stop offset="1" stop-color="#1239A6"/></linearGradient><linearGradient id="ppb" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E2F9A"/><stop offset=".5" stop-color="#2463E8"/><stop offset="1" stop-color="#8CC0FA"/></linearGradient><linearGradient id="ppe" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><linearGradient id="pps" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16367A" stop-opacity=".34"/><stop offset=".55" stop-color="#16367A" stop-opacity=".18"/><stop offset="1" stop-color="#16367A" stop-opacity="0"/></linearGradient><filter id="ppf" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="22"/></filter><filter id="ppg" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs><rect width="1412" height="640" fill="url(#ppbg)"/><ellipse cx="260" cy="580" rx="520" ry="220" fill="#F7EBC6" opacity=".75" filter="url(#ppf)"/><g class="sky-drift"><path d="M 1500 -40 C 1240 120, 1120 300, 980 470 C 840 640, 640 820, 300 1040 L 1500 1040 Z" fill="url(#ppb)" opacity=".92"/><path d="M 1500 120 C 1300 260, 1180 420, 1060 560 C 940 700, 780 860, 560 1040 L 1500 1040 Z" fill="url(#ppa)" opacity=".75" filter="url(#ppg)"/></g><g class="sky-drift2"><path class="sky-shine" d="M 1500 -60 C 1230 110, 1110 290, 970 460 C 830 630, 630 810, 290 1030" fill="none" stroke="url(#ppe)" stroke-width="3"/><path d="M 1500 -60 C 1230 110, 1110 290, 970 460 C 830 630, 630 810, 290 1030" fill="none" stroke="#fff" stroke-width="26" opacity=".25" filter="url(#ppf)"/><path d="M 1500 260 C 1330 380, 1220 520, 1120 640 C 1020 760, 900 880, 760 1040" fill="none" stroke="#E6F1FF" stroke-width="1.5" opacity=".7"/></g><rect width="1412" height="640" fill="url(#pps)"/></svg>
+  <header>
+  <nav class="topnav" aria-label="Main">
+    <a class="brand white" href="../index.html" aria-label="Windsor Harlow home"><img src="../assets/brand/logo-reverse.svg" alt="Windsor Harlow" width="120" height="32"></a>
+    <div class="navlinks"><a href="../services.html">Services</a><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../blog.html" aria-current="page">Blog</a><a href="../contact.html">Contact</a></div>
+    <a class="btn btn-dark sm" href="../contact.html">Let’s talk <span class="arr" aria-hidden="true">↗</span></a>
+    <button class="menu-btn" type="button" data-menu aria-controls="drawer" aria-expanded="false" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+  </nav>
+</header>
+  <div class="hero-copy">
+    <nav class="crumbs blur-in" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../blog.html">Blog</a><span aria-hidden="true">/</span><span>AI & ML</span></nav>
+    <h1 class="h-page blur-in d1">Your first AI feature: pick one task, ground it in your data, measure it</h1>
+    <p class="lede blur-in d2">A practical way to get from &quot;we should use AI&quot; to a feature people trust, in about four weeks, without betting the quarter on it.</p>
+    <div class="post-meta blur-in d3"><span class="tag product">AI &amp; ML</span><span>1 Nov 2026</span><span aria-hidden="true">·</span><span>4 min read</span><span aria-hidden="true">·</span><span>Windsor Harlow</span></div>
+  </div>
+</section>
+<section class="wrap section">
+  <div class="post-grid">
+    <aside class="post-toc" aria-label="On this page"><span class="mono">On this page</span><nav><a href="#1-pick-one-task-not-a-platform">1. Pick one task, not a platform</a><a href="#2-ground-it-in-your-own-documents">2. Ground it in your own documents</a><a href="#3-write-the-test-before-you-build">3. Write the test before you build</a><a href="#4-handle-privacy-access-and-cost-from-day-one">4. Handle privacy, access and cost from day one</a><a href="#5-a-four-week-pilot">5. A four-week pilot</a><a href="#where-to-go-from-here">Where to go from here</a></nav></aside>
+    <article class="post-body" id="post"><p>Most companies want to "do something with AI". Far fewer have a clear first project. The usual result is a chatbot demo that impresses in a meeting, then quietly gets switched off because nobody trusts its answers.</p>
+<p>There is a more reliable way to start. Pick one task, ground the AI in your own documents, and decide in advance how you'll measure whether it works. This post walks through that approach.</p>
+<h2 id="1-pick-one-task-not-a-platform">1. Pick one task, not a platform</h2>
+<p>A good first task has four things going for it:</p>
+<ul><li><strong>It happens often.</strong> Dozens or hundreds of times a week, so small savings add up.</li><li><strong>It's mostly reading and writing text.</strong> Answering policy questions, summarising tickets, pulling fields out of invoices, drafting replies.</li><li><strong>A person can check the result quickly.</strong> If checking takes as long as doing the work, you've saved nothing.</li><li><strong>A wrong answer is annoying, not dangerous.</strong> Start where mistakes are cheap and easy to catch.</li></ul>
+<p>"Help our support team answer delivery and returns questions from our policies" is a good first task. "An AI that runs customer service" is not; it's ten projects pretending to be one.</p>
+<h2 id="2-ground-it-in-your-own-documents">2. Ground it in your own documents</h2>
+<p>Language models are fluent, and fluent is not the same as correct. Ask one about your returns policy and it will produce a confident answer based on what returns policies usually say, which may not be yours.</p>
+<p>The standard fix is called <strong>retrieval-augmented generation</strong>, or RAG. It works in two steps:</p>
+<ol><li><strong>Retrieve.</strong> When a question comes in, search your own documents for the few passages most likely to contain the answer.</li><li><strong>Generate.</strong> Give the model the question <em>and</em> those passages, and instruct it to answer only from them, cite them, and say so when they don't contain the answer.</li></ol>
+<p>The second instruction matters as much as the first. An assistant that says "I can't find that in our documents" is one people learn to trust. One that always has an answer is one they learn to double-check, which defeats the point.</p>
+<aside class="callout"><p>You can see the retrieval step working on our <a href="../services/ai.html#demo">AI &amp; ML page</a>. Ask the sample handbook a question and it shows which passages it found, how relevant each one is, and when it refuses to answer.</p></aside>
+<h2 id="3-write-the-test-before-you-build">3. Write the test before you build</h2>
+<p>Before writing any code, collect 30 to 50 real questions with the answers a good employee would give. Include a few questions the documents <em>can't</em> answer. This set becomes your scorecard.</p>
+<p>For every question, check three things:</p>
+<ul><li><strong>Correct</strong>: does the answer match what a good employee would say?</li><li><strong>Grounded</strong>: does it cite the passage the answer actually came from?</li><li><strong>Honest</strong>: when the documents don't cover it, does it decline instead of guessing?</li></ul>
+<p>Run the whole set after every change: a new prompt, a different model, a change to how documents are split. Without it, every tweak is a guess. With it, you can say "we went from 31 to 44 out of 50" and mean it.</p>
+<h2 id="4-handle-privacy-access-and-cost-from-day-one">4. Handle privacy, access and cost from day one</h2>
+<p>These are easier to design in than to bolt on later:</p>
+<ul><li><strong>Keep data in your own accounts</strong> where you can, and choose providers and settings that don't use your data to train their models.</li><li><strong>Respect permissions.</strong> If an employee can't open a document, the assistant shouldn't quote it to them. Apply access rules at the retrieval step.</li><li><strong>Log questions and answers</strong>, with sources, so you can review failures and improve the test set.</li><li><strong>Measure cost per answer.</strong> Smaller, cheaper models are often good enough for classification and extraction; save the large ones for writing.</li></ul>
+<h2 id="5-a-four-week-pilot">5. A four-week pilot</h2>
+<p>This is roughly how we run a first AI project:</p>
+<ol><li><strong>Week 1: pick and prepare.</strong> Agree on the task, gather the documents, write the test set.</li><li><strong>Week 2: build a working prototype.</strong> Retrieval over your documents and answers with sources, running in your own cloud account.</li><li><strong>Week 3: measure and harden.</strong> Run the test set, fix the failures, add guardrails for refusals, privacy and cost.</li><li><strong>Week 4: real users, real decision.</strong> Put it in front of a small group, review what happened, and decide whether to scale it, change it or stop.</li></ol>
+<p>At the end you have a working prototype, a test set you own, measured results and a cost per answer. That's enough to make a real decision, which a demo never gives you.</p>
+<h2 id="where-to-go-from-here">Where to go from here</h2>
+<p>If you have a task in mind, the fastest next step is to write down twenty questions people ask about it and where the answers live today. That's already half of week one.</p>
+<p>When you're ready, <a href="../contact.html">tell us about it</a> and we'll help you shape the pilot.</p>
+      <aside class="post-cta"><div class="svc-name"><span class="orb" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM18.5 15.5l.8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z"/></svg></span><span class="t">AI &amp; machine learning</span></div><p>Practical AI features — assistants, search over your documents, automation and predictions — built into your product and measured.</p><div class="hero-actions" style="justify-content:flex-start"><a class="btn btn-dark sm" href="../contact.html">Talk to us <span class="arr" aria-hidden="true">↗</span></a><a class="link-arrow" href="../services/ai.html">About this service <span aria-hidden="true">→</span></a></div></aside>
+    </article>
+  </div>
+</section>
+<section class="wrap" style="padding-bottom:20px">
+  <div class="section-head split rv"><h2 class="h-card">More from the blog</h2><a class="link-arrow" href="../blog.html">All posts <span aria-hidden="true">→</span></a></div>
+  <div class="blog-grid two"><a class="bcard rv d0 " href="../blog/rune-is-open-source.html"><span class="bc-cover" aria-hidden="true"><div class="cv cv-rune shot"><div class="ring r1"></div><div class="mini-b"><div class="bar"><i></i><i></i><i></i></div><img src="../assets/shots/rune-dashboard.jpg" alt="" loading="lazy"></div><div class="term"><span><b>$</b> rune unseal</span><span class="dim">✓ vault unsealed</span></div></div></span><span class="bc-body"><span class="bc-meta"><span class="tag product">Security</span><span>4 min read</span></span><span class="bc-title">Rune is now open source</span><span class="bc-sum">Our secrets manager is public under Apache 2.0. Why we built it, how it keeps secrets safe, and how to try it in five minutes.</span><span class="link-arrow">Read the post <span aria-hidden="true">→</span></span></span></a><a class="bcard rv d1 " href="../blog/terraform-plan-on-every-pr.html"><span class="bc-cover" aria-hidden="true"><div class="cv cv-tf"><div class="pr"><div class="prh"><span class="open">Open</span><b>Add private subnets</b></div><div class="diff"><span class="add">+ aws_subnet.private_a</span><span class="add">+ aws_subnet.private_b</span><span class="chg">~ aws_route_table.main</span></div><div class="plan">Plan: 2 to add, 1 to change, 0 to destroy</div><div class="checks"><span>✓ terraform plan</span><span>✓ OIDC auth</span></div><div class="merge">Merge → apply</div></div></div></span><span class="bc-body"><span class="bc-meta"><span class="tag product">Cloud &amp; DevOps</span><span>3 min read</span></span><span class="bc-title">Plan on every pull request: safer Terraform on AWS with GitHub Actions and OIDC</span><span class="bc-sum">Stop applying infrastructure from laptops. A practical setup for reviewed Terraform changes, shared state and AWS access with no stored keys.</span><span class="link-arrow">Read the post <span aria-hidden="true">→</span></span></span></a></div>
+</section>
+</main></div>
+<footer class="foot" id="contact-panel">
+  <svg class="sky-art" aria-hidden="true" viewBox="0 0 1412 760" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ftb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0E2F9A"/><stop offset=".6" stop-color="#2463E8"/><stop offset="1" stop-color="#9CC4F5"/></linearGradient><linearGradient id="ftw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#CFE3FB"/><stop offset="1" stop-color="#5E93DC"/></linearGradient></defs><rect width="1412" height="760" fill="url(#ftb)"/><g class="sky-drift"><path d="M 1500 0 C 1260 140, 1120 320, 980 520 C 900 640, 820 720, 760 800 L 1500 800 Z" fill="url(#ftw)" opacity=".55"/></g><path class="sky-shine" d="M 1500 -20 C 1250 130, 1110 310, 970 510 C 890 630, 810 710, 750 800" fill="none" stroke="#fff" stroke-width="2.5" opacity=".8"/></svg>
+  <div class="foot-in">
+    <div class="foot-cta rv">
+      <h2>Have something to build? Tell us where you are — a senior engineer will reply.</h2>
+      <a class="btn btn-dark" href="../contact.html">Contact us <span class="arr" aria-hidden="true">↗</span></a>
+    </div>
+    <div class="foot-links">
+      <div><h3>Contact</h3><a href="mailto:business@windsorharlow.com">business@windsorharlow.com</a><p style="margin-top:8px">Built in India. Working globally.</p></div>
+      <div><h3>Services</h3><a href="../services/ai.html">AI &amp; ML</a><a href="../services/cloud.html">Cloud &amp; DevOps</a><a href="../services/mobile.html">Mobile apps</a><a href="../services/backend.html">Backend systems</a><a href="../services/web.html">Web products</a><a href="../services/commerce.html">Commerce</a><a href="../services/salesforce.html">Salesforce</a></div>
+      <div><h3>Studio</h3><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../work/rune.html">Rune</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
+      <div><h3>Legal</h3><a href="../privacy.html">Privacy</a></div>
+    </div>
+    <div class="foot-mark" aria-hidden="true"><img class="fm-badge" src="../assets/brand/badge-vector-white.svg" alt=""><img class="fm-word" src="../assets/brand/wordmark-vector-white.svg" alt=""></div>
+    <div class="foot-base"><span>© <span data-year>2026</span> Windsor Harlow. All rights reserved.</span><span>Independent engineering studio</span></div>
+  </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

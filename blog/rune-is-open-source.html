@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rune is now open source — Windsor Harlow</title>
+<meta name="description" content="Our secrets manager is public under Apache 2.0. Why we built it, how it keeps secrets safe, and how to try it in five minutes.">
+<link rel="canonical" href="https://windsorharlow.com/blog/rune-is-open-source.html">
+<meta name="theme-color" content="#2463E8">
+<meta property="og:site_name" content="Windsor Harlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rune is now open source — Windsor Harlow">
+<meta property="og:description" content="Our secrets manager is public under Apache 2.0. Why we built it, how it keeps secrets safe, and how to try it in five minutes.">
+<meta property="og:url" content="https://windsorharlow.com/blog/rune-is-open-source.html">
+<meta property="og:image" content="https://windsorharlow.com/assets/og/blog-rune-is-open-source.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rune is now open source — Windsor Harlow">
+<meta name="twitter:description" content="Our secrets manager is public under Apache 2.0. Why we built it, how it keeps secrets safe, and how to try it in five minutes.">
+<meta name="twitter:image" content="https://windsorharlow.com/assets/og/blog-rune-is-open-source.jpg">
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","js");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Rune is now open source","description":"Our secrets manager is public under Apache 2.0. Why we built it, how it keeps secrets safe, and how to try it in five minutes.","datePublished":"2026-11-01","author":{"@type":"Organization","name":"Windsor Harlow"},"publisher":{"@type":"Organization","name":"Windsor Harlow"},"mainEntityOfPage":"https://windsorharlow.com/blog/rune-is-open-source.html"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="floatnav" id="floatnav">
+  <a class="brand" href="../index.html" aria-label="Windsor Harlow home"><img src="../assets/brand/logo-primary.svg" alt="Windsor Harlow" width="100" height="26"></a>
+  <nav class="links" aria-label="Quick"><a href="../services.html">Services</a><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../blog.html" aria-current="page">Blog</a><a href="../contact.html">Contact</a></nav>
+  <a class="btn btn-dark sm" href="../contact.html">Let’s talk <span class="arr" aria-hidden="true">↗</span></a>
+  <button class="menu-btn" type="button" data-menu aria-controls="drawer" aria-expanded="false" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+</div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+  <div class="drawer-top">
+    <a class="brand" href="../index.html"><img src="../assets/brand/logo-primary.svg" alt="Windsor Harlow" width="110" height="28"></a>
+    <button class="close" type="button" data-close aria-label="Close menu">×</button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="../index.html">Home</a>
+    <a href="../services.html">Services</a><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a>
+  </nav>
+  <div class="drawer-foot">
+    <a class="btn btn-dark" href="../contact.html">Start a project <span class="arr" aria-hidden="true">↗</span></a>
+    <a href="mailto:business@windsorharlow.com" style="color:var(--body)">business@windsorharlow.com</a>
+  </div>
+</div>
+<div class="page"><div class="read-progress" aria-hidden="true"><i></i></div><main id="main" tabindex="-1"><section class="sky page-hero left post-hero" aria-label="Page introduction">
+  <svg class="sky-art" aria-hidden="true" viewBox="0 0 1412 640" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ppbg" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#2F62B8"/><stop offset=".45" stop-color="#5E93DC"/><stop offset=".78" stop-color="#B9D3F0"/><stop offset="1" stop-color="#F1E6C4"/></linearGradient><linearGradient id="ppa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#DCEBFF"/><stop offset=".35" stop-color="#7FB2F4"/><stop offset=".7" stop-color="#2A64DA"/><stop offset="1" stop-color="#1239A6"/></linearGradient><linearGradient id="ppb" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E2F9A"/><stop offset=".5" stop-color="#2463E8"/><stop offset="1" stop-color="#8CC0FA"/></linearGradient><linearGradient id="ppe" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><linearGradient id="pps" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16367A" stop-opacity=".34"/><stop offset=".55" stop-color="#16367A" stop-opacity=".18"/><stop offset="1" stop-color="#16367A" stop-opacity="0"/></linearGradient><filter id="ppf" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="22"/></filter><filter id="ppg" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs><rect width="1412" height="640" fill="url(#ppbg)"/><ellipse cx="260" cy="580" rx="520" ry="220" fill="#F7EBC6" opacity=".75" filter="url(#ppf)"/><g class="sky-drift"><path d="M 1500 -40 C 1240 120, 1120 300, 980 470 C 840 640, 640 820, 300 1040 L 1500 1040 Z" fill="url(#ppb)" opacity=".92"/><path d="M 1500 120 C 1300 260, 1180 420, 1060 560 C 940 700, 780 860, 560 1040 L 1500 1040 Z" fill="url(#ppa)" opacity=".75" filter="url(#ppg)"/></g><g class="sky-drift2"><path class="sky-shine" d="M 1500 -60 C 1230 110, 1110 290, 970 460 C 830 630, 630 810, 290 1030" fill="none" stroke="url(#ppe)" stroke-width="3"/><path d="M 1500 -60 C 1230 110, 1110 290, 970 460 C 830 630, 630 810, 290 1030" fill="none" stroke="#fff" stroke-width="26" opacity=".25" filter="url(#ppf)"/><path d="M 1500 260 C 1330 380, 1220 520, 1120 640 C 1020 760, 900 880, 760 1040" fill="none" stroke="#E6F1FF" stroke-width="1.5" opacity=".7"/></g><rect width="1412" height="640" fill="url(#pps)"/></svg>
+  <header>
+  <nav class="topnav" aria-label="Main">
+    <a class="brand white" href="../index.html" aria-label="Windsor Harlow home"><img src="../assets/brand/logo-reverse.svg" alt="Windsor Harlow" width="120" height="32"></a>
+    <div class="navlinks"><a href="../services.html">Services</a><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../blog.html" aria-current="page">Blog</a><a href="../contact.html">Contact</a></div>
+    <a class="btn btn-dark sm" href="../contact.html">Let’s talk <span class="arr" aria-hidden="true">↗</span></a>
+    <button class="menu-btn" type="button" data-menu aria-controls="drawer" aria-expanded="false" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+  </nav>
+</header>
+  <div class="hero-copy">
+    <nav class="crumbs blur-in" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../blog.html">Blog</a><span aria-hidden="true">/</span><span>Security</span></nav>
+    <h1 class="h-page blur-in d1">Rune is now open source</h1>
+    <p class="lede blur-in d2">Our secrets manager is public under Apache 2.0. Why we built it, how it keeps secrets safe, and how to try it in five minutes.</p>
+    <div class="post-meta blur-in d3"><span class="tag product">Security</span><span>1 Nov 2026</span><span aria-hidden="true">·</span><span>4 min read</span><span aria-hidden="true">·</span><span>Windsor Harlow</span></div>
+  </div>
+</section>
+<section class="wrap section">
+  <div class="post-grid">
+    <aside class="post-toc" aria-label="On this page"><span class="mono">On this page</span><nav><a href="#why-we-built-rune">Why we built Rune</a><a href="#what-it-does">What it does</a><a href="#how-it-keeps-secrets-safe">How it keeps secrets safe</a><a href="#try-it-in-five-minutes">Try it in five minutes</a><a href="#using-it-from-a-java-service">Using it from a Java service</a><a href="#what-rune-is-not-yet">What Rune is not, yet</a><a href="#get-involved">Get involved</a></nav></aside>
+    <article class="post-body" id="post"><p>Rune, the secrets manager we've been building, is now open source under the Apache 2.0 license. The first release candidate, <strong>v1.0.0-RC</strong>, is on <a href="https://github.com/runelock-io/rune" target="_blank" rel="noopener">GitHub</a>, and the <a href="https://hyphen-ani.github.io/rune-web/" target="_blank" rel="noopener">Rune website</a> has the docs and a demo that runs in your browser.</p>
+<p>This post explains why we built it, how it protects what you put in it, and where its limits are today.</p>
+<h2 id="why-we-built-rune">Why we built Rune</h2>
+<p>Almost every team we work with has the same problem. Database passwords live in <code>.env</code> files. API keys get pasted into chat to unblock someone. CI variables collect values nobody remembers adding. When someone leaves, nobody is sure which keys they had.</p>
+<p>Large secrets platforms solve this, but they come with clusters to run, policies to learn and an operations burden that a small team can't justify. So the secrets stay where they are.</p>
+<p>We wanted something in between: a tool a developer can install in a few minutes, that is still strict about the things that matter. Rune's own tagline says it best: <em>secrets management, without the ceremony.</em></p>
+<h2 id="what-it-does">What it does</h2>
+<p>Rune stores secrets encrypted, keeps them sealed until you decide otherwise, and hands them only to the tokens you allow. Release 1.0.0-RC includes:</p>
+<ul><li><strong>Encrypted secrets</strong> with create, read, update and delete from the CLI, web UI or HTTP API.</li><li><strong>Seal and unseal</strong>, so a stopped or sealed vault reveals nothing.</li><li><strong>Namespaces</strong> to keep production, staging and individual services apart.</li><li><strong>Token RBAC</strong> with read, write, delete and rotate permissions per namespace, plus token expiry.</li><li><strong>Rotation</strong>, manual or automated, with every version kept.</li><li><strong>Audit logging</strong> of every action, including the ones that were denied.</li><li><strong>App and service identities</strong>, and a <strong>Spring Boot starter</strong> for Java services.</li></ul>
+<h2 id="how-it-keeps-secrets-safe">How it keeps secrets safe</h2>
+<p>A secrets tool is only as good as its security model, so here is Rune's in plain terms.</p>
+<p><strong>Sealed by default.</strong> When the server starts, the vault is sealed. Unsealing derives the vault key from your passphrase and a random per-vault salt. The passphrase is never stored; Rune checks it by decrypting a known record. The key lives only in memory, and sealing the vault or restarting the server wipes it.</p>
+<p><strong>Encrypted at the record.</strong> Every secret is encrypted with AES-256-GCM using a fresh random nonce on every write. Secret values in the database file on disk are stored only as ciphertext.</p>
+<p><strong>Least privilege.</strong> Tokens are 32 random bytes, shown once when created. Rune stores only their SHA-256 hash, so a copy of the database doesn't give anyone working tokens. Each token gets specific permissions in specific namespaces, and revoking one takes effect immediately.</p>
+<p><strong>A history you can trust.</strong> Each rotation keeps an encrypted version you can read back, and every request is logged with the time, actor, action, target and result.</p>
+<aside class="callout"><p>Encryption at rest protects stored secrets. It does not protect a machine that is already compromised while the vault is unsealed. No secrets tool can, so treat the host running Rune as sensitive.</p></aside>
+<h2 id="try-it-in-five-minutes">Try it in five minutes</h2>
+<p>Rune ships as two binaries, <code>rune-server</code> and the <code>rune</code> CLI, for macOS and Linux on amd64 and arm64. The install script downloads the release and moves both binaries into <code>/usr/local/bin</code>. It uses <code>sudo</code>, so read it first if that matters to you.</p>
+<div class="code"><span class="code-lang">bash</span><pre><code>curl -fsSL https://raw.githubusercontent.com/runelock-io/rune/main/scripts/install.sh | sh
+rune --version</code></pre></div>
+<p>Start the server. On the first run it asks you to set a passphrase and prints the root token once, so keep it somewhere safe.</p>
+<div class="code"><span class="code-lang">bash</span><pre><code>rune-server</code></pre></div>
+<p>In a second terminal, log in, unseal and store your first secret:</p>
+<div class="code"><span class="code-lang">bash</span><pre><code>rune login &lt;root-token&gt;
+rune unseal
+rune put db-password &#x27;hunter2-but-longer&#x27;
+rune get db-password</code></pre></div>
+<p>Then do it properly: give production its own namespace and give your service a token that can only read it.</p>
+<div class="code"><span class="code-lang">bash</span><pre><code>rune namespace create production
+rune put db-password &#x27;…&#x27; -n production
+rune token create payments-api -n production:read</code></pre></div>
+<h2 id="using-it-from-a-java-service">Using it from a Java service</h2>
+<p>For Spring Boot 3 on Java 17 or later, add the starter:</p>
+<div class="code"><span class="code-lang">xml</span><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;io.rune&lt;/groupId&gt;
+  &lt;artifactId&gt;rune-spring-boot-starter&lt;/artifactId&gt;
+  &lt;version&gt;0.1.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></div>
+<p>Point it at your server and namespace:</p>
+<div class="code"><span class="code-lang">properties</span><pre><code>rune.url=http://localhost:2710
+rune.token=${RUNE_TOKEN}
+rune.namespace=production</code></pre></div>
+<p>Then read secrets through <code>RuneClient.getSecret(namespace, key)</code>. By default the application fails fast at startup if Rune can't be reached, which is usually what you want.</p>
+<h2 id="what-rune-is-not-yet">What Rune is not, yet</h2>
+<p>We'd rather you know the limits up front:</p>
+<ul><li><strong>It's a release candidate.</strong> Try it, break it and tell us. Test it properly before you trust it with production.</li><li><strong>The server speaks plain HTTP on port 2710.</strong> Run it on localhost or a private network, or put a TLS proxy in front of it.</li><li><strong>There is no recovery path.</strong> If you lose the passphrase, the secrets are gone. That is deliberate.</li><li><strong>It runs on one machine.</strong> High availability, remote storage and dynamic secrets are on the roadmap. Next up are Kubernetes secret mapping, an automatic secrets injector, secret rollback and rotation policies.</li></ul>
+<h2 id="get-involved">Get involved</h2>
+<p>The code is on <a href="https://github.com/runelock-io/rune" target="_blank" rel="noopener">GitHub</a>, the <a href="https://hyphen-ani.github.io/rune-web/docs.html" target="_blank" rel="noopener">docs</a> cover the CLI and HTTP API in detail, and <a href="https://github.com/runelock-io/rune/issues" target="_blank" rel="noopener">issues</a> are open for bugs and ideas.</p>
+<p>If you'd like help introducing proper secrets management to your platform, with Rune or with something else, <a href="../contact.html">talk to us</a>.</p>
+      <aside class="post-cta"><div class="svc-name"><span class="orb" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01"/></svg></span><span class="t">Backend systems</span></div><p>The APIs, data and integrations behind your product — secure, observable and ready for more customers.</p><div class="hero-actions" style="justify-content:flex-start"><a class="btn btn-dark sm" href="../contact.html">Talk to us <span class="arr" aria-hidden="true">↗</span></a><a class="link-arrow" href="../services/backend.html">About this service <span aria-hidden="true">→</span></a></div></aside>
+    </article>
+  </div>
+</section>
+<section class="wrap" style="padding-bottom:20px">
+  <div class="section-head split rv"><h2 class="h-card">More from the blog</h2><a class="link-arrow" href="../blog.html">All posts <span aria-hidden="true">→</span></a></div>
+  <div class="blog-grid two"><a class="bcard rv d0 " href="../blog/your-first-ai-feature.html"><span class="bc-cover" aria-hidden="true"><div class="cv cv-rag"><div class="qq">How long do refunds take?</div><div class="psgs"><span class="psg"><em>returns-policy.pdf</em><i style="--s:92%"></i></span><span class="psg"><em>claims-guide.pdf</em><i style="--s:64%"></i></span><span class="psg"><em>support-hours.md</em><i style="--s:18%"></i></span></div><div class="ans"><span>Within 5 working days of the item reaching the warehouse.</span><b>[1]</b></div></div></span><span class="bc-body"><span class="bc-meta"><span class="tag product">AI &amp; ML</span><span>4 min read</span></span><span class="bc-title">Your first AI feature: pick one task, ground it in your data, measure it</span><span class="bc-sum">A practical way to get from &quot;we should use AI&quot; to a feature people trust, in about four weeks, without betting the quarter on it.</span><span class="link-arrow">Read the post <span aria-hidden="true">→</span></span></span></a><a class="bcard rv d1 " href="../blog/terraform-plan-on-every-pr.html"><span class="bc-cover" aria-hidden="true"><div class="cv cv-tf"><div class="pr"><div class="prh"><span class="open">Open</span><b>Add private subnets</b></div><div class="diff"><span class="add">+ aws_subnet.private_a</span><span class="add">+ aws_subnet.private_b</span><span class="chg">~ aws_route_table.main</span></div><div class="plan">Plan: 2 to add, 1 to change, 0 to destroy</div><div class="checks"><span>✓ terraform plan</span><span>✓ OIDC auth</span></div><div class="merge">Merge → apply</div></div></div></span><span class="bc-body"><span class="bc-meta"><span class="tag product">Cloud &amp; DevOps</span><span>3 min read</span></span><span class="bc-title">Plan on every pull request: safer Terraform on AWS with GitHub Actions and OIDC</span><span class="bc-sum">Stop applying infrastructure from laptops. A practical setup for reviewed Terraform changes, shared state and AWS access with no stored keys.</span><span class="link-arrow">Read the post <span aria-hidden="true">→</span></span></span></a></div>
+</section>
+</main></div>
+<footer class="foot" id="contact-panel">
+  <svg class="sky-art" aria-hidden="true" viewBox="0 0 1412 760" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ftb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0E2F9A"/><stop offset=".6" stop-color="#2463E8"/><stop offset="1" stop-color="#9CC4F5"/></linearGradient><linearGradient id="ftw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#CFE3FB"/><stop offset="1" stop-color="#5E93DC"/></linearGradient></defs><rect width="1412" height="760" fill="url(#ftb)"/><g class="sky-drift"><path d="M 1500 0 C 1260 140, 1120 320, 980 520 C 900 640, 820 720, 760 800 L 1500 800 Z" fill="url(#ftw)" opacity=".55"/></g><path class="sky-shine" d="M 1500 -20 C 1250 130, 1110 310, 970 510 C 890 630, 810 710, 750 800" fill="none" stroke="#fff" stroke-width="2.5" opacity=".8"/></svg>
+  <div class="foot-in">
+    <div class="foot-cta rv">
+      <h2>Have something to build? Tell us where you are — a senior engineer will reply.</h2>
+      <a class="btn btn-dark" href="../contact.html">Contact us <span class="arr" aria-hidden="true">↗</span></a>
+    </div>
+    <div class="foot-links">
+      <div><h3>Contact</h3><a href="mailto:business@windsorharlow.com">business@windsorharlow.com</a><p style="margin-top:8px">Built in India. Working globally.</p></div>
+      <div><h3>Services</h3><a href="../services/ai.html">AI &amp; ML</a><a href="../services/cloud.html">Cloud &amp; DevOps</a><a href="../services/mobile.html">Mobile apps</a><a href="../services/backend.html">Backend systems</a><a href="../services/web.html">Web products</a><a href="../services/commerce.html">Commerce</a><a href="../services/salesforce.html">Salesforce</a></div>
+      <div><h3>Studio</h3><a href="../work.html">Work</a><a href="../about.html">About</a><a href="../work/rune.html">Rune</a><a href="../blog.html">Blog</a><a href="../contact.html">Contact</a></div>
+      <div><h3>Legal</h3><a href="../privacy.html">Privacy</a></div>
+    </div>
+    <div class="foot-mark" aria-hidden="true"><img class="fm-badge" src="../assets/brand/badge-vector-white.svg" alt=""><img class="fm-word" src="../assets/brand/wordmark-vector-white.svg" alt=""></div>
+    <div class="foot-base"><span>© <span data-year>2026</span> Windsor Harlow. All rights reserved.</span><span>Independent engineering studio</span></div>
+  </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>
